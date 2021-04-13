@@ -1,0 +1,14 @@
+/*$primary: darken(#428bca, 20%);
+$body-bg: #000;
+$body-color: #111;*/
+// the ~ allows you to reference things in node_modules
+$primary:#2f3c48;
+$secondary:#6f7f8c;
+$success:#008000;
+$danger:#cc330d;
+$info:#5c8f94;
+$warning:#FED000;
+$light:#eceeec;
+$dark:#1e2b37;
+
+@import "~bootstrap/scss/bootstrap";

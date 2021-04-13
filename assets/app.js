@@ -7,6 +7,16 @@
 
 // any CSS you import will output into a single css file (app.css in this case)
 import './styles/app.css';
-
+import './styles/global.scss';
+import "@fortawesome/fontawesome-free/js/all";
 // start the Stimulus application
-import './bootstrap';
+
+const $ = require('jquery');
+global.$ = global.jQuery = $;
+import 'bootstrap';
+
+
+$(document).ready(function() {
+   $('[data-toggle="popover"]').popover();
+   $('[data-toggle="tooltip"]').tooltip();
+});
