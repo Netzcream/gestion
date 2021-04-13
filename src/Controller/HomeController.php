@@ -16,6 +16,7 @@ class HomeController extends AbstractController
 
     /**
      * @Route({"en" :"/home","es": "/inicio"}, name="home")
+     * @Route({"en" :"/index","es": "/index"}, name="index")
      */
     public function index(): Response
     {

@@ -25,23 +25,28 @@ class DashboardController extends AbstractDashboardController {
     }
 
     public function configureDashboard(): Dashboard {
-        
+
         return Dashboard::new()
         ->setTranslationDomain('admin')
         ->renderContentMaximized()
+
         //->renderSidebarMinimized()
         ///->disableUrlSignatures()
         //->setTitle('Gestion');
 
-        ->setTitle('<img src="../build/images/logo-admin.png" width="50"> Admin <span class="text-small">Gestión</span>');
+        ->setFaviconPath('build/images/logo-admin.png')
+        ->setTitle('<img src="../build/images/logo-admin.png" width="50"> Admin <span class="text-small">Gestión</span>')
+
+        ;
     }
 
     public function configureMenuItems(): iterable {
 
         return [
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+             
             MenuItem::section('Users'),
-            ///MenuItem::linkToCrud('Comments', 'fa fa-comment', Comment::class),
+            //MenuItem::linkToCrud('Comments', 'fa fa-comment', Comment::class),
             MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
         ];
 

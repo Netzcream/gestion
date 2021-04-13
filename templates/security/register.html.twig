@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% trans %}Registrarme{% endtrans %}{% endblock %}
+
+    {% block header %}
+    {% endblock %}
+
+    
+
+    {% block body %}
+
+        <div class="container user_login_register_form">
+            <div class="row">
+                <div class="col-lg-10 col-xl-9 mx-auto">
+                    <div class="card card-signin flex-row my-5">
+                        <div class="card-img-left d-none d-md-flex">
+
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title text-center">{% trans %}Registrarme{% endtrans %}</h5>
+
+
+
+
+                            {{ form_start(registrationForm, {'attr': {'class': 'form-signin'} } ) }}
+
+                            {% for flashError in app.flashes('verify_email_error') %}
+                                <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                            {% endfor %}
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    No sos {{ app.user.username }}? <a href="{{ path('app_logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
+
+
+
+                            <div class="form-label-group">
+                                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder' : 'Email'} } ) }}
+                                <label for="{{ registrationForm.email.vars.id }}">{{ registrationForm.email.vars.label }}</label>
+                            </div>
+
+
+                            <div class="form-label-group">
+                                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control', 'placeholder' : 'Password'} } ) }}
+                                <label for="{{ registrationForm.plainPassword.vars.id }}">Password</label>
+                            </div>    
+
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+
+
+                            <div class="checkbox mb-3">
+
+                                <label>
+                                    {{ form_widget(registrationForm.agreeTerms) }}
+                                    {{ registrationForm.agreeTerms.vars.label }}
+                                </label>
+                            </div>
+
+
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">{% trans %}Registrarme{% endtrans %}</button>
+                            <a class="d-block text-center mt-2 small" href="{{path('app_login')}}">{% trans %}Ingresar{% endtrans %}</a>
+                            <hr class="my-4">
+                            <a class="btn btn-lg btn-google btn-block text-uppercase" href="{{path('connect_google_start')}}"><i class="fab fa-google mr-2"></i> {% trans %}Ingresar con Google{% endtrans %}</a>
+
+
+                            <a class="btn btn-lg btn-facebook btn-block text-uppercase" href="{{path('connect_facebook_start')}}"><i class="fab fa-facebook-f mr-2"></i> {% trans %}Ingresar con Facebook{% endtrans %}</a>
+                            {{ form_end(registrationForm) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    {% endblock %}
+    {% block javascripts %}
+    {% endblock %}
