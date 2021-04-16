@@ -5,8 +5,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
-class HomeController extends AppController
-{
+class HomeController extends AppController {
 
     /**
      * @Route("/", name="index")

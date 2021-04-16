@@ -10,6 +10,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\User;
+use App\Entity\EstadoCivil;
+use App\Entity\Pais;
+use App\Entity\Genero;
+use App\Entity\TipoDocumento;
+use App\Entity\EmpresaEstado;
+use App\Entity\ContactoEstado;
 
 /**
  * @Route("/admin")
@@ -43,11 +49,20 @@ class DashboardController extends AbstractDashboardController {
     public function configureMenuItems(): iterable {
 
         return [
+
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
              
             MenuItem::section('Users'),
-            //MenuItem::linkToCrud('Comments', 'fa fa-comment', Comment::class),
+            
+
             MenuItem::linkToCrud('Users', 'fa fa-user', User::class),
+            MenuItem::section('Combos'),
+            MenuItem::linkToCrud('Pais', 'fas fa-globe-americas', Pais::class),
+            MenuItem::linkToCrud('Genero', 'fas fa-venus-mars', Genero::class),
+            MenuItem::linkToCrud('Estado Civil', 'far fa-dot-circle', EstadoCivil::class),
+            MenuItem::linkToCrud('Tipo de documento', 'far fa-dot-circle', TipoDocumento::class),
+            MenuItem::linkToCrud('Estado de Empresa', 'far fa-dot-circle', EmpresaEstado::class),
+            MenuItem::linkToCrud('Estado de Contactos', 'far fa-dot-circle', ContactoEstado::class),
         ];
 
         //yield MenuItem::linktoDashboard('Dashboard', 'fa fa-home');

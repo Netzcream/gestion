@@ -1,0 +1,82 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Formulario
+{% endblock %}
+
+
+
+{% block body %}
+	
+
+
+	<h1>Contacto</h1>
+	<hr>
+
+
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Formulario</h5>
+
+
+			{{ form_start(form) }}
+
+			<div class="row">
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.genero} %}
+					
+				</div>
+				<div class="col">
+
+					{% include 'form/text_floating.html.twig' with {campo : form.nombre} %}
+					
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.apellido} %}
+
+					
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.fecha_nacimiento} %}
+					
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.tipo_documento} %}
+					
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.documento} %}
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.estado_civil} %}
+					
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.nacionalidad} %}
+				</div>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col">
+					{{form_widget(form.guardar)}}
+
+					{{form_widget(form.volver)}}
+				</div>
+			</div>
+
+			{{ form_end(form) }}
+
+
+
+		</div>
+	</div>
+
+	
+{% endblock %}

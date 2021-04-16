@@ -9,14 +9,46 @@
 import './styles/app.css';
 import './styles/global.scss';
 import "@fortawesome/fontawesome-free/js/all";
-// start the Stimulus application
+
+
 
 const $ = require('jquery');
 global.$ = global.jQuery = $;
+
+import '@popperjs/core';
+window.bootstrap = require('bootstrap/dist/js/bootstrap.bundle.js');
 import 'bootstrap';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import 'datatables.net-bs';
+import 'datatables.net-bs/css/dataTables.bootstrap.min.css';
+
+
 
 
 $(document).ready(function() {
-   $('[data-toggle="popover"]').popover();
-   $('[data-toggle="tooltip"]').tooltip();
+
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+	var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+		return new bootstrap.Tooltip(tooltipTriggerEl)
+	})
+
+	var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+	var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+		return new bootstrap.Popover(popoverTriggerEl)
+	})
+
+
+	$('table.datatable').DataTable(
+	{
+		responsive: true,
+		language: {
+			url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json',
+		},
+
+
+	}
+	);
+	
 });

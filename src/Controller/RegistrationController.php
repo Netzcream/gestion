@@ -16,8 +16,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 
-class RegistrationController extends AbstractController
-{
+class RegistrationController extends AppController {
     private $emailVerifier;
 
     public function __construct(EmailVerifier $emailVerifier)

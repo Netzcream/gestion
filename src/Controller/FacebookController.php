@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class FacebookController extends AbstractController {
+class FacebookController extends AppController {
     /**
      * Link to this controller to start the "connect" process
      * @param ClientRegistry $clientRegistry

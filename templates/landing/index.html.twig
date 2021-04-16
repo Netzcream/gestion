@@ -1,13 +1,43 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+<head>
+	{% trans_default_domain 'app' %}
+		<meta charset="UTF-8">
+		<title>{% block title %}Landing{% endblock %}</title>
 
-{% block title %}Landing!{% endblock %}
+		<style>
+		.body {
+			min-height: 75vh;
+		}
+		</style>
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
 
-	{% block body %}
+		{% endblock %}
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
 
-		<div class="container">
-			<h1>Landing  <i class="fa fa-cog"></i></h1>
+	</head>
+	<body>
+		{% include 'header.html.twig' %}
+		<div class="body">
+			{% block body %}
 
-			{{dump(app.user)}}
+				<div class="container">
+					<h1>Landing
+						<i class="bi bi-cursor"></i>
+
+						
+					</h1>
+				</div>
+				
+			{% endblock %}
 		</div>
 
-	{% endblock %}
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+
+	</body>
+	{% include 'footer.html.twig' %}
+	</html>

@@ -13,6 +13,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.1",
         "doctrine/orm": "^2.8",
         "easycorp/easyadmin-bundle": "^3.2",
+        "knplabs/knp-paginator-bundle": "^5.4",
         "league/oauth2-facebook": "^2.0",
         "league/oauth2-google": "^4.0",
         "league/oauth2-linkedin": "^5.1",

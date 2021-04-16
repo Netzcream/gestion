@@ -1,1 +1,91 @@
-Header
+{% set current_path = app.request.get('_route') %}
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark nav-fill w-100 text-light">
+		<div class="container">
+			<div class="navbar-collapse collapse order-1  w-50 order-md-0 dual-collapse2">
+				<ul class="navbar-nav me-auto">
+					<li class="nav-item {{(current_path in ['home'] ? 'active' :'')}}">
+						<a class="nav-link" href="{{path('home')}}">
+							Inicio
+						</a>
+					</li>
+
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Módulos
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="#"><i class="bi bi-building"></i> &nbsp;Empresas</a></li>
+							<li><a class="dropdown-item" href="{{path('contactos')}}"><i class="bi bi-person"></i> &nbsp;Contactos</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li><a class="dropdown-item" href="#">...</a></li>
+						</ul>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="#" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Right <i>test</i> popover">Algo</a>
+					</li>
+
+				</ul>
+			</div>
+
+
+
+			<div class="navbar-collapse collapse order-2 w-50 order-md-1 dual-collapse3 text-light" >
+				<ul class="navbar-nav ms-auto" >
+
+					{% if app.user %}
+
+
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								{{app.user.nombre}} {{app.user.apellido}}
+
+							</a>
+							<ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+								<h5 class="dropdown-header">
+									{% if app.user.avatar %}
+										<img src="{{app.user.avatar}}" class="avatar" />
+									{% endif %}
+									{{app.user.email}} 
+
+								</h5>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="#"><i class="bi bi-person-badge"></i>&nbsp;Mis Datos</a></li>
+								<li><a class="dropdown-item" href="#"><i class="bi bi-toggles"></i>&nbsp;Configuración</a></li>
+
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="{{path('app_logout')}}"> 
+									<i class="bi bi-door-open"></i>&nbsp;Desconectar
+								</a>
+							</li>
+						</ul>
+					</li>
+
+
+				{% else %}
+					<li class="nav-item" style="display: inline-block;">
+						<a class="nav-link" href="{{path('app_login')}}">
+							<i class="bi bi-door-closed"></i>&nbsp;Ingresar
+						</a>
+					</li>
+				{% endif %}
+
+
+
+			</ul>
+		</div>
+	</div>
+</nav>
+
+
+
+<style>
+.avatar {
+	border-radius: 10px;
+
+}
+.navbar .avatar {
+	width: 30px;
+}
+</style>

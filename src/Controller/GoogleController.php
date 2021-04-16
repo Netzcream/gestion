@@ -8,8 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class GoogleController extends AbstractController
-{
+class GoogleController extends AppController {
     /**
      * @Route("/google", name="google")
      */
@@ -31,8 +30,8 @@ class GoogleController extends AbstractController
     public function connectAction(ClientRegistry $clientRegistry)
     {
         return $clientRegistry
-            ->getClient('google')
-            ->redirect([
+        ->getClient('google')
+        ->redirect([
                 'profile', 'email' // the scopes you want to access
             ])
         ;
@@ -53,12 +52,12 @@ class GoogleController extends AbstractController
     {
 
     	 /*dump($request);
-            die;*/
+         die;*/
 
 
 
-            
-        return $this->redirectToRoute('index');
-    }
+         
+         return $this->redirectToRoute('index');
+     }
 
-}
+ }

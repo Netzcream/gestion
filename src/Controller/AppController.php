@@ -21,4 +21,9 @@ class AppController extends AbstractController {
         }
         return $this->isGranted($rol);
     }
+
+    protected function regenerateIdCrm($entity) {
+        $entity->setIdCrm(bin2hex(openssl_random_pseudo_bytes(4)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(6)));
+    }
+
 }
