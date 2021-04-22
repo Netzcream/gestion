@@ -1,1 +1,22 @@
+.label-flotante .required i.obligatorio {
+	right: -5px;
+	top: -15px ;
+	margin:0 ;
+	padding:0;
+}
+.label-simple.required  {
+	position: relative;
 
+}
+.label-simple.required i.obligatorio {
+	right: -5px ;
+	top: 10px;
+	margin:0;
+	padding:0;
+}
+.required i.obligatorio {
+	position: absolute;
+	color:red;
+	font-size: 2em;
+	z-index:1;
+}

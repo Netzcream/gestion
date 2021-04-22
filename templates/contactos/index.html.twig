@@ -1,56 +1,59 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-	Contacto
+	Contactos
 {% endblock %}
 
-	{% block body %}
-
-
-		{{ form_start(form) }}
-		{{ form_end(form) }}
-		<h1>Contacto</h1>
-
-		<a href="{{path('contactos_nuevo')}}">Nuevo</a>
-		<hr>
+{% block body %}
+	<h1>Contactos</h1>
 
 
 
 
+	{{ form_start(form) }}
+	{{ form_end(form) }}
+
+
+	<a href="{{path('contactos_nuevo')}}">Nuevo</a>
+	<hr>
 
 
 
-		<table  class="table table-striped table-bordered datatable" style="width:100%">
-			<thead class="table-dark">
+
+
+
+
+	<table  class="table table-striped table-bordered datatable" style="width:100%">
+		<thead class="table-dark">
+			<tr>
+				<th>Contacto</th>
+				<th></th>
+			</tr>
+
+		</thead>
+		<tbody style="vertical-align: middle;">
+			{% for entity in entities %}
 				<tr>
-					<th>Contacto</th>
-					<th></th>
+					<td>{{entity}}</td>
+					<td style="text-align: right;">
+						<a class="btn btn-dark text-light btn-sm" href="{{path('contactos_editar',{id:entity.id})}}" data-bs-toggle="tooltip" title="Editar" role="button">
+							<i class="bi bi-pencil-square"></i>
+
+						</a>
+						<a class="btn btn-dark text-light btn-sm" href="{{path('contactos_editar',{id:entity.id})}}" data-bs-toggle="tooltip" title="Eliminar" role="button">
+							<i class="bi bi-trash"> </i>
+
+						</a>
+
+					</td>
 				</tr>
+			{% endfor %}
+		</tbody>
+		<tfoot class="table-dark">
+			<tr>
+				<td colspan="2"></td>
+			</tr>
+		</tfoot>
+	</table>
 
-			</thead>
-			<tbody style="vertical-align: middle;">
-				{% for entity in entities %}
-					<tr>
-						<td>{{entity}}</td>
-						<td style="text-align: right;">
-							<a class="btn btn-dark text-light btn-sm" href="{{path('contactos_editar',{id:entity.id})}}" data-bs-toggle="tooltip" title="Editar" role="button">
-								<i class="bi bi-pencil-square"></i>
-
-							</a>
-							<a class="btn btn-dark text-light btn-sm" href="{{path('contactos_editar',{id:entity.id})}}" data-bs-toggle="tooltip" title="Eliminar" role="button">
-								<i class="bi bi-trash"> </i>
-
-							</a>
-							
-						</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-			<tfoot class="table-dark">
-				<tr>
-					<td colspan="2"></td>
-				</tr>
-			</tfoot>
-		</table>
-
-	{% endblock %}
+{% endblock %}

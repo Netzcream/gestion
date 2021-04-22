@@ -10,10 +10,10 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
-use App\Entity\TipoDocumento;
-use App\Entity\Genero;
-use App\Entity\Pais;
-use App\Entity\EstadoCivil;
+use App\Entity\Cliente\TipoDocumento;
+use App\Entity\Cliente\Genero;
+use App\Entity\Cliente\Pais;
+use App\Entity\Cliente\EstadoCivil;
 
 class ContactoType extends AbstractType
 {
@@ -45,7 +45,7 @@ class ContactoType extends AbstractType
 				'label' => "Fecha de Nacimiento",
 				'help' => "Seleccione su fecha de nacimiento",
 				'widget' => 'single_text',
-				"html5" => false,
+				"html5" => true,
 				"attr" => [
 					'placeholder' => "",
 				]
@@ -68,6 +68,7 @@ class ContactoType extends AbstractType
 		$builder->add('documento', 
 			TextType::class, [
 				'label' => "Nro de Documento",
+				'required' => false,
 				'help' => "Ingrese su numero de documento",
 				"attr" => [
 					'placeholder' => "###########",

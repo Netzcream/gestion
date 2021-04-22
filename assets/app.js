@@ -40,6 +40,12 @@ $(document).ready(function() {
 	})
 
 
+	$("[data-for]").on('click',function() {
+		$($(this).data('for')).focus();
+	});
+	
+
+
 	$('table.datatable').DataTable(
 	{
 		responsive: true,

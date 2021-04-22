@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Cliente;
 
-use App\Entity\EstadoCivil;
+use App\Entity\Cliente\Empresa;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method EstadoCivil|null find($id, $lockMode = null, $lockVersion = null)
- * @method EstadoCivil|null findOneBy(array $criteria, array $orderBy = null)
- * @method EstadoCivil[]    findAll()
- * @method EstadoCivil[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Empresa|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Empresa|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Empresa[]    findAll()
+ * @method Empresa[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class EstadoCivilRepository extends ServiceEntityRepository
+class EmpresaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, EstadoCivil::class);
+        parent::__construct($registry, Empresa::class);
     }
 
     // /**
-    //  * @return EstadoCivil[] Returns an array of EstadoCivil objects
+    //  * @return Empresa[] Returns an array of Empresa objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class EstadoCivilRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?EstadoCivil
+    public function findOneBySomeField($value): ?Empresa
     {
         return $this->createQueryBuilder('e')
             ->andWhere('e.exampleField = :val')

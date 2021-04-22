@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Cliente;
 
-use App\Entity\Contacto;
+use App\Entity\Cliente\Contacto;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -42,6 +42,16 @@ class ContactoRepository extends ServiceEntityRepository
 
         return $builder->getQuery()->getResult();
     }
+
+     /**
+      * @return Contacto[] Returns an array of Contacto objects
+      */
+     public function todos() {
+        $builder = $this->createQueryBuilder('c');
+        $builder->orderBy('c.id','ASC');
+        return $builder->getQuery()->getResult();
+    }
+
 
 
     /*

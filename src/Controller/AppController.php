@@ -12,8 +12,8 @@ class AppController extends AbstractController {
         return $request->request->get($v);
     }
 
-    protected function getManager() {
-        return $this->getDoctrine()->getManager();
+    protected function getManager($d = 'General') {
+        return $this->getDoctrine()->getManager($d);
     }
     protected function hasRol($rol = null) {
         if (empty($rol)) {

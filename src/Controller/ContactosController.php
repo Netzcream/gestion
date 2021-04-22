@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\ContactoType;
 use App\Form\ContactoBuscarType;
-use App\Entity\Contacto;
+use App\Entity\Cliente\Contacto;
 
 /**
  * @IsGranted("ROLE_USER")
@@ -20,14 +20,19 @@ class ContactosController extends AppController {
      * @Route("/", name="contactos")
      */
     public function index(Request $request): Response {
-    	$em = $this->getManager();
+    	$em = $this->getManager('Cliente');
     	$entities = null; 
         $form = $this->createForm(ContactoBuscarType::class);
         $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $entities = $em->getRepository(Contacto::class)->buscar($form->getData());
-            
+        if ($form->isSubmitted()) {
+            if ($form->isValid()) {
+                $entities = $em->getRepository(Contacto::class)->buscar($form->getData());
+            }
+        } else {
+            $entities = $em->getRepository(Contacto::class)->todos();
+            if (sizeof($entities) > 50) {
+                $entities = null;
+            }
         }
         return $this->render('contactos/index.html.twig', [
             'form' => $form->createView(),
@@ -41,7 +46,7 @@ class ContactosController extends AppController {
      */
     public function formulario(Request $request, $id = null): Response
     {
-    	$em = $this->getManager();
+    	$em = $this->getManager('Cliente');
     	$entity = new Contacto();
     	if ($id) {
     		$entity = $em->getRepository(Contacto::class)->find($id);

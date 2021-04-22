@@ -1,4 +1,4 @@
-<div class="form-group">
+<div class="form-group label-simple {{(campo.vars.required ? 'required' : '')}}">
 	<label class="{{(campo.vars.required ? 'required' : '')}}">
 		{{campo.vars.label}} 
 		{% if campo.vars.help %}
@@ -6,5 +6,9 @@
 		{% endif %}
 		
 	</label>
+
+	{% if campo.vars.required %}
+		<i class="bi bi-dot obligatorio" data-for="#{{campo.vars.id}}"></i>
+	{% endif %}
 	{{form_widget(campo)}}
 </div>

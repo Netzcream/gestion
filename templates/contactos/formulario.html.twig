@@ -10,10 +10,8 @@
 {% block body %}
 	
 
-
-	<h1>Contacto</h1>
+	<h1>Contacto </h1>
 	<hr>
-
 
 	<div class="card">
 		<div class="card-body">
@@ -23,25 +21,21 @@
 			{{ form_start(form) }}
 
 			<div class="row">
-				<div class="col">
-					{% include 'form/text_floating.html.twig' with {campo : form.genero} %}
-					
-				</div>
-				<div class="col">
 
+				<div class="col">
 					{% include 'form/text_floating.html.twig' with {campo : form.nombre} %}
-					
 				</div>
 				<div class="col">
 					{% include 'form/text_floating.html.twig' with {campo : form.apellido} %}
-
-					
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.fecha_nacimiento} %}
 				</div>
 
 			</div>
 			<div class="row">
 				<div class="col">
-					{% include 'form/text_floating.html.twig' with {campo : form.fecha_nacimiento} %}
+					{% include 'form/text_floating.html.twig' with {campo : form.genero} %}
 					
 				</div>
 				<div class="col">

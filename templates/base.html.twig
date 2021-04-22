@@ -13,10 +13,10 @@
         
         
         {% block stylesheets %}
-            
+
             {{ encore_entry_link_tags('app') }}
 
-<link href="//cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+            <link href="//cdn.datatables.net/1.10.24/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
 
         {% endblock %}
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
@@ -36,13 +36,16 @@
 
         {% block javascripts %}
 
-            
+
             {{ encore_entry_script_tags('app') }}
             
-
             
-        {% endblock %}
 
+
+        {% endblock %}
+        <style>
+
+        </style>
     </body>
     {% include 'footer.html.twig' %}
     </html>
