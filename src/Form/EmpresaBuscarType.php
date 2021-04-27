@@ -14,7 +14,7 @@ use App\Entity\Cliente\Genero;
 use App\Entity\Cliente\Pais;
 use App\Entity\Cliente\EstadoCivil;
 
-class ContactoBuscarType extends AbstractType
+class EmpresaBuscarType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options): void
 	{
@@ -22,46 +22,14 @@ class ContactoBuscarType extends AbstractType
 		$builder->add('texto', 
 			TextType::class,[
 				'label' => "Buscar",
-				'help' => "Por favor, ingrese nombre o parte de el para realizar la búsqueda",
+				'help' => "Por favor, ingrese razon social, nombre fantasía o parte de ello para realizar la búsqueda",
 				"attr" => [
 					'placeholder' => "Buscar...",
 				]
 			]
 
 		);
-		/*$builder->add('apellido', 
-			TextType::class,[
-				'label' => "Apellido",
-				'help' => "Por favor, ingrese su apellido",
-				"attr" => [
-					'placeholder' => "Ingresar su apellido",
-				]
-			]
-		);
-
-		$builder->add('fecha_nacimiento', 
-			DateType::class,[
-				'label' => "Fecha de Nacimiento",
-				'help' => "Seleccione su fecha de nacimiento",
-				'widget' => 'single_text',
-				"html5" => true,
-				"attr" => [
-					'placeholder' => "",
-				]
-			]
-		);
-		$builder->add('tipo_documento', 
-			EntityType::class, [
-				'class' => TipoDocumento::class,
-				'label' => "Tipo de Documento",
-				'required' => true,
-				'help' => "Seleccione su tipo de documento",
-				'empty_data' => 'Seleccionar',
-				"attr" => [
-					'placeholder' => "Seleccionar",
-				]
-			]
-		);
+		/*
 
 		$builder->add('documento', 
 			TextType::class, [
@@ -73,19 +41,7 @@ class ContactoBuscarType extends AbstractType
 			]
 		);
 		
-		$builder->add('genero', 
-			EntityType::class, [
-				'class' => Genero::class,
-				'label' => "Genero",
-				'required' => true,
-				'help' => "Seleccione su genero",
-				'empty_data' => 'Seleccionar',
-				"attr" => [
-					'placeholder' => "Seleccionar",
-				]
-			]
-		);
-
+		
 		$builder->add('nacionalidad', 
 			EntityType::class, [
 				'class' => Pais::class,

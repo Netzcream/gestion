@@ -3,6 +3,7 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
@@ -11,52 +12,41 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use App\Entity\Cliente\TipoDocumento;
-use App\Entity\Cliente\Genero;
-use App\Entity\Cliente\Pais;
-use App\Entity\Cliente\EstadoCivil;
+use App\Entity\Cliente\EmpresaEstado;
 
-class ContactoType extends AbstractType
+class EmpresaType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options): void
 	{
 		$entity = $builder->getData();
-		$builder->add('nombre', 
+		$builder->add('razon_social', 
 			TextType::class,[
-				'label' => "Nombre",
-				'help' => "Por favor, ingrese su nombre",
+				'label' => "Razón Social",
+				'help' => "Por favor, ingrese razón social",
 				"attr" => [
-					'placeholder' => "Ingresar su nombre",
+					'placeholder' => "Ingresar razón social",
 				]
 			]
 
 		);
-		$builder->add('apellido', 
+		$builder->add('nombre_fantasia', 
 			TextType::class,[
-				'label' => "Apellido",
-				'help' => "Por favor, ingrese su apellido",
+				'label' => "Nombre de fantasía",
+				'help' => "Por favor, ingrese nombre de fantasía",
+				'required' => false,
 				"attr" => [
-					'placeholder' => "Ingresar su apellido",
+					'placeholder' => "Nombre de fantasía",
 				]
 			]
 		);
 
-		$builder->add('fecha_nacimiento', 
-			DateType::class,[
-				'label' => "Fecha de Nacimiento",
-				'help' => "Seleccione su fecha de nacimiento",
-				'widget' => 'single_text',
-				"html5" => true,
-				"attr" => [
-					'placeholder' => "",
-				]
-			]
-		);
+
 		$builder->add('tipo_documento', 
 			EntityType::class, [
 				'class' => TipoDocumento::class,
 				'label' => "Tipo de Documento",
 				'required' => false,
-				'help' => "Seleccione su tipo de documento",
+				'help' => "Seleccione tipo de documento",
 				'placeholder' => 'Seleccionar',
 				"attr" => [
 					'placeholder' => "Seleccionar",
@@ -69,47 +59,37 @@ class ContactoType extends AbstractType
 			TextType::class, [
 				'label' => "Nro de Documento",
 				'required' => false,
-				'help' => "Ingrese su numero de documento",
+				'help' => "Ingresar documento",
 				"attr" => [
 					'placeholder' => "###########",
 				]
 			]
 		);
+
+		$builder->add('cliente', 
+			CheckboxType::class, [
+				'label' => "Cliente",
+				'required' => false,
+				"attr" => [
+				]
+			]
+		);
+		$builder->add('proveedor', 
+			CheckboxType::class, [
+				'label' => "Proveedor",
+				'required' => false,
+				"attr" => [
+				]
+			]
+		);
 		
-		$builder->add('genero', 
-			EntityType::class, [
-				'class' => Genero::class,
-				'label' => "Genero",
-				'required' => false,
-				'help' => "Seleccione su genero",
-				'placeholder' => 'Seleccionar',
-				"attr" => [
-					'placeholder' => "Seleccionar",
-					'class' => 'form-select'
-				]
-			]
-		);
 
-		$builder->add('nacionalidad', 
+		$builder->add('estado', 
 			EntityType::class, [
-				'class' => Pais::class,
-				'label' => "Nacionalidad",
+				'class' => EmpresaEstado::class,
+				'label' => "Estado",
 				'required' => false,
-				'help' => "Seleccione su nacionalidad",
-				'placeholder' => 'Seleccionar',
-				"attr" => [
-					'placeholder' => "Seleccionar",
-					'class' => 'form-select'
-				]
-			]
-		);
-
-		$builder->add('estado_civil', 
-			EntityType::class, [
-				'class' => EstadoCivil::class,
-				'label' => "Estado Civil",
-				'required' => false,
-				'help' => "Seleccione su estado civil",
+				'help' => "Seleccione estado",
 				'placeholder' => 'Seleccionar',
 				"attr" => [
 					'placeholder' => "Seleccionar",

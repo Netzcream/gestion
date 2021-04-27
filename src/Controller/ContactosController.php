@@ -34,7 +34,7 @@ class ContactosController extends AppController {
                 $entities = null;
             }
         }
-        return $this->render('contactos/index.html.twig', [
+        return $this->render('contacto/index.html.twig', [
             'form' => $form->createView(),
             'entities' => $entities,
         ]);
@@ -61,7 +61,7 @@ class ContactosController extends AppController {
     	}
 
 
-    	return $this->render('contactos/formulario.html.twig', [
+    	return $this->render('contacto/formulario.html.twig', [
     		'form' => $form->createView(),
     	]);
     }

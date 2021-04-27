@@ -79,7 +79,7 @@ class Empresa
     }
 
     public function __toString() {
-        return $this->nombre;
+        return $this->razon_social;
     }
 
     public function getId(): ?int

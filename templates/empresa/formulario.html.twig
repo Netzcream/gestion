@@ -1,0 +1,74 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Formulario
+{% endblock %}
+
+
+
+{% block body %}
+	
+
+	<h1>Empresa </h1>
+	<hr>
+
+	<div class="card">
+		<div class="card-body">
+			{{ form_start(form) }}
+
+			<div class="row  mb-3">
+				<div class="col">
+					<h6>
+						Tipo de empresa
+					</h6>
+					{% include 'form/checkbox.html.twig' with {campo : form.cliente, inline:true} %}
+
+					{% include 'form/checkbox.html.twig' with {campo : form.proveedor, inline:true} %}
+				</div>
+			</div>
+			<hr>
+
+			<div class="row  mb-3">
+
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.estado} %}
+					
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.razon_social} %}
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.nombre_fantasia} %}
+				</div>
+				
+
+			</div>
+			<div class="row  mb-3">
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.tipo_documento} %}
+					
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.documento} %}
+					
+				</div>
+			</div>
+
+			<div class="row  mb-3">
+				<div class="col">
+					{{form_widget(form.guardar)}}
+
+					<a href="{{path('empresas')}}">Volver</a>
+				</div>
+			</div>
+
+			{{ form_end(form) }}
+
+
+
+		</div>
+	</div>
+
+	
+{% endblock %}

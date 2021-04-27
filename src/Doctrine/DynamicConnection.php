@@ -27,3 +27,4 @@ class DynamicConnection extends Connection
         );
     }
 }
+#https://medium.com/cabasa-technologies/symfony-dynamic-database-connection-ed96951f9fdc

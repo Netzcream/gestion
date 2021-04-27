@@ -1,0 +1,15 @@
+<div class="form-group {{(campo.vars.required ? 'required' : '')}} {{(inline is defined and inline == true ? 'form-check-inline' : '' )}}">
+	<div class="form-check form-switch">
+		<input class="form-check-input" type="checkbox" id="{{campo.vars.id}}" {{ campo.vars.checked ? 'checked' : ''}}>
+		<label class="form-check-label {{(campo.vars.required ? 'required' : '')}}" for="{{campo.vars.id}}">
+			{{campo.vars.label}} 
+			{% if campo.vars.help %}
+				<i class="bi bi-info-circle-fill text-info" role="button"  data-bs-toggle="popover" data-bs-trigger="hover focus" data-bs-placement="top" data-bs-content="{{campo.vars.help}}"></i>
+			{% endif %}
+
+		</label>
+		{% do campo.setRendered %}
+	</div>
+
+</div>
+

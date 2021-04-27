@@ -20,7 +20,7 @@
 
 			{{ form_start(form) }}
 
-			<div class="row">
+			<div class="row mb-3">
 
 				<div class="col">
 					{% include 'form/text_floating.html.twig' with {campo : form.nombre} %}
@@ -33,7 +33,7 @@
 				</div>
 
 			</div>
-			<div class="row">
+			<div class="row mb-3">
 				<div class="col">
 					{% include 'form/text_floating.html.twig' with {campo : form.genero} %}
 					
@@ -47,7 +47,7 @@
 					
 				</div>
 			</div>
-			<div class="row">
+			<div class="row mb-3">
 				<div class="col">
 					{% include 'form/text_floating.html.twig' with {campo : form.estado_civil} %}
 					
@@ -57,11 +57,11 @@
 				</div>
 			</div>
 			<hr>
-			<div class="row">
+			<div class="row mb-3">
 				<div class="col">
 					{{form_widget(form.guardar)}}
 
-					{{form_widget(form.volver)}}
+					<a href="{{path('contactos')}}">Volver</a>
 				</div>
 			</div>
 
