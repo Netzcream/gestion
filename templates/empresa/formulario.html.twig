@@ -17,7 +17,7 @@
 		<div class="card-body">
 			{{ form_start(form) }}
 
-			<div class="row  mb-3">
+			<div class="row  mb-1">
 				<div class="col">
 					<h6>
 						Tipo de empresa
@@ -29,7 +29,7 @@
 			</div>
 			<hr>
 
-			<div class="row  mb-3">
+			<div class="row  mb-1">
 
 				<div class="col">
 					{% include 'form/text_floating.html.twig' with {campo : form.estado} %}
@@ -44,7 +44,19 @@
 				
 
 			</div>
-			<div class="row  mb-3">
+
+			<div class="row mb-1">
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.correo.email} %}
+					
+				</div>
+				<div class="col">
+					{% include 'form/text_floating.html.twig' with {campo : form.correo_alternativo.email} %}
+					
+				</div>
+			</div>
+
+			<div class="row  mb-1">
 				<div class="col">
 					{% include 'form/text_floating.html.twig' with {campo : form.tipo_documento} %}
 					
@@ -55,7 +67,7 @@
 				</div>
 			</div>
 
-			<div class="row  mb-3">
+			<div class="row  mb-1">
 				<div class="col">
 					{{form_widget(form.guardar)}}
 

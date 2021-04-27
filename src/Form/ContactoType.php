@@ -14,6 +14,7 @@ use App\Entity\TipoDocumento;
 use App\Entity\Genero;
 use App\Entity\Pais;
 use App\Entity\EstadoCivil;
+use App\Form\CorreoType;
 
 class ContactoType extends AbstractType
 {
@@ -39,7 +40,26 @@ class ContactoType extends AbstractType
 				]
 			]
 		);
+		$builder->add('correo', 
+			CorreoType::class,[
+				'required' => false,
+				'label' => "Correo electrónico",
+				'help' => "Correo principal",
+				'placeholder' => "Ej: usuario@empresa.com",
+				
+			]
+		);
+		$builder->add('correo_alternativo', 
+			CorreoType::class,[
+				'required' => false,
+				'label' => "Correo electrónico",
+				'help' => "Correo alternativo",
+				'placeholder' => "Ej: usuario@empresa.com",
+				
+			]
+		);
 
+		
 		$builder->add('fecha_nacimiento', 
 			DateType::class,[
 				'label' => "Fecha de Nacimiento",

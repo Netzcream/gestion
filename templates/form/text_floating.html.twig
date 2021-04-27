@@ -1,7 +1,7 @@
 <div class="form-group label-flotante">
 	<div class="form-floating mb-3 {{(campo.vars.required ? 'required' : '')}}">
 		{% if campo.vars.required %}
-			<i class="bi bi-dot obligatorio" data-for="#{{campo.vars.id}}"></i>
+			<i class="bi bi-dot obligatorio" data-for="#{{campo.vars.id}}" title="Obligatorio" ></i>
 		{% endif %}
 		{{form_widget(campo)}}
 		{{form_help(campo)}}

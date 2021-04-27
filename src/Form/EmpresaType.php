@@ -13,6 +13,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 use App\Entity\TipoDocumento;
 use App\Entity\EmpresaEstado;
+use App\Form\CorreoType;
 
 class EmpresaType extends AbstractType
 {
@@ -39,7 +40,24 @@ class EmpresaType extends AbstractType
 				]
 			]
 		);
-
+		$builder->add('correo', 
+			CorreoType::class,[
+				'required' => false,
+				'label' => "Correo electrónico",
+				'help' => "Correo principal",
+				'placeholder' => "Ej: usuario@empresa.com",
+				
+			]
+		);
+		$builder->add('correo_alternativo', 
+			CorreoType::class,[
+				'required' => false,
+				'label' => "Correo electrónico",
+				'help' => "Correo alternativo",
+				'placeholder' => "Ej: usuario@empresa.com",
+				
+			]
+		);
 
 		$builder->add('tipo_documento', 
 			EntityType::class, [
