@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\EmpresaType;
 use App\Form\EmpresaBuscarType;
-use App\Entity\Cliente\Empresa;
+use App\Entity\Empresa;
 
 
 /**
@@ -22,7 +22,7 @@ class EmpresaController extends AppController {
      */
     public function index(Request $request): Response
     {
-    	$em = $this->getManager('Cliente');
+    	$em = $this->getManager();
     	$entities = null; 
         $form = $this->createForm(EmpresaBuscarType::class);
         $form->handleRequest($request);
@@ -47,7 +47,7 @@ class EmpresaController extends AppController {
      */
     public function formulario(Request $request, $id = null): Response
     {
-        $em = $this->getManager('Cliente');
+        $em = $this->getManager();
         $entity = new Empresa();
         if ($id) {
             $entity = $em->getRepository(Empresa::class)->find($id);

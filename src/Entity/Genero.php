@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Entity\Cliente;
+namespace App\Entity;
 
-use App\Repository\Cliente\TipoDocumentoRepository;
+use App\Repository\GeneroRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TipoDocumentoRepository::class)
+ * @ORM\Entity(repositoryClass=GeneroRepository::class)
  */
-class TipoDocumento
+class Genero
 {
     /**
      * @ORM\Id
@@ -35,13 +35,13 @@ class TipoDocumento
     private $vigente;
 
     /**
-     * @ORM\OneToMany(targetEntity=Empresa::class, mappedBy="tipo_documento")
+     * @ORM\OneToMany(targetEntity=Contacto::class, mappedBy="genero")
      */
-    private $empresas;
+    private $contactos;
 
     public function __construct()
     {
-        $this->empresas = new ArrayCollection();
+        $this->contactos = new ArrayCollection();
         $this->idCrm = bin2hex(openssl_random_pseudo_bytes(4)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(6));
         $this->vigente = 1;
     }
@@ -49,7 +49,6 @@ class TipoDocumento
     public function __toString() {
         return $this->nombre;
     }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -92,29 +91,29 @@ class TipoDocumento
     }
 
     /**
-     * @return Collection|Empresa[]
+     * @return Collection|Contacto[]
      */
-    public function getEmpresas(): Collection
+    public function getContactos(): Collection
     {
-        return $this->empresas;
+        return $this->contactos;
     }
 
-    public function addEmpresa(Empresa $empresa): self
+    public function addContacto(Contacto $contacto): self
     {
-        if (!$this->empresas->contains($empresa)) {
-            $this->empresas[] = $empresa;
-            $empresa->setTipoDocumento($this);
+        if (!$this->contactos->contains($contacto)) {
+            $this->contactos[] = $contacto;
+            $contacto->setGenero($this);
         }
 
         return $this;
     }
 
-    public function removeEmpresa(Empresa $empresa): self
+    public function removeContacto(Contacto $contacto): self
     {
-        if ($this->empresas->removeElement($empresa)) {
+        if ($this->contactos->removeElement($contacto)) {
             // set the owning side to null (unless already changed)
-            if ($empresa->getTipoDocumento() === $this) {
-                $empresa->setTipoDocumento(null);
+            if ($contacto->getGenero() === $this) {
+                $contacto->setGenero(null);
             }
         }
 

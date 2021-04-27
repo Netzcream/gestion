@@ -1,8 +1,0 @@
-doctrine_migrations_multiple_database:
-    entity_managers:
-        General:
-            migrations_paths:
-                DoctrineMigrations\General: '%kernel.project_dir%/migrations/General'
-        Cliente:
-            migrations_paths:
-                DoctrineMigrations\Cliente: '%kernel.project_dir%/migrations/Cliente'

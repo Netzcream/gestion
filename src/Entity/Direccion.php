@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity\Cliente;
+namespace App\Entity;
 
-use App\Repository\Cliente\DireccionRepository;
+use App\Repository\DireccionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

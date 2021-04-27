@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\Cliente;
+namespace App\Repository;
 
-use App\Entity\Cliente\TipoDocumento;
+use App\Entity\TipoDocumento;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

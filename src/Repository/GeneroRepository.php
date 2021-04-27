@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\Cliente;
+namespace App\Repository;
 
-use App\Entity\Cliente\Genero;
+use App\Entity\Genero;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

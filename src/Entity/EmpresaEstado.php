@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity\Cliente;
+namespace App\Entity;
 
-use App\Repository\Cliente\EmpresaEstadoRepository;
+use App\Repository\EmpresaEstadoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

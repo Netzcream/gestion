@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DoctrineMigrations\Cliente;
+namespace DoctrineMigrationsGeneral;
 
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210422151252 extends AbstractMigration
+final class Version20210427143833 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -30,6 +30,7 @@ final class Version20210422151252 extends AbstractMigration
         $this->addSql('CREATE TABLE genero (id INT AUTO_INCREMENT NOT NULL, id_crm VARCHAR(255) NOT NULL, nombre VARCHAR(255) NOT NULL, vigente TINYINT(1) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE pais (id INT AUTO_INCREMENT NOT NULL, id_crm VARCHAR(255) NOT NULL, nombre VARCHAR(255) NOT NULL, iso VARCHAR(255) DEFAULT NULL, nombre_corto VARCHAR(255) DEFAULT NULL, vigente TINYINT(1) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE tipo_documento (id INT AUTO_INCREMENT NOT NULL, id_crm VARCHAR(255) NOT NULL, nombre VARCHAR(255) NOT NULL, vigente TINYINT(1) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) DEFAULT NULL, is_active TINYINT(1) DEFAULT NULL, is_verified TINYINT(1) NOT NULL, google_id VARCHAR(255) DEFAULT NULL, enabled TINYINT(1) DEFAULT NULL, locale VARCHAR(255) DEFAULT NULL, nombre VARCHAR(255) DEFAULT NULL, apellido VARCHAR(255) DEFAULT NULL, google_avatar VARCHAR(255) DEFAULT NULL, fecha_crea DATETIME NOT NULL, ultimo_ingreso DATETIME DEFAULT NULL, avatar VARCHAR(255) DEFAULT NULL, facebook_id VARCHAR(255) DEFAULT NULL, facebook_avatar VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE contacto ADD CONSTRAINT FK_2741493CF6939175 FOREIGN KEY (tipo_documento_id) REFERENCES tipo_documento (id)');
         $this->addSql('ALTER TABLE contacto ADD CONSTRAINT FK_2741493CBCE7B795 FOREIGN KEY (genero_id) REFERENCES genero (id)');
         $this->addSql('ALTER TABLE contacto ADD CONSTRAINT FK_2741493CAB8DC0F8 FOREIGN KEY (nacionalidad_id) REFERENCES pais (id)');
@@ -71,5 +72,6 @@ final class Version20210422151252 extends AbstractMigration
         $this->addSql('DROP TABLE genero');
         $this->addSql('DROP TABLE pais');
         $this->addSql('DROP TABLE tipo_documento');
+        $this->addSql('DROP TABLE user');
     }
 }

@@ -11,8 +11,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\FormBuilderInterface;
 
-use App\Entity\Cliente\TipoDocumento;
-use App\Entity\Cliente\EmpresaEstado;
+use App\Entity\TipoDocumento;
+use App\Entity\EmpresaEstado;
 
 class EmpresaType extends AbstractType
 {

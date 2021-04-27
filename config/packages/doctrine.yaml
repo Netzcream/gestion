@@ -24,8 +24,8 @@ doctrine:
                     General:
                         is_bundle: false
                         type: annotation
-                        dir: '%kernel.project_dir%/src/Entity/General'
-                        prefix: 'App\Entity\General'
+                        dir: '%kernel.project_dir%/src/Entity'
+                        prefix: 'App\Entity'
                         alias: General
             Cliente:
                 connection: Cliente
@@ -35,6 +35,6 @@ doctrine:
                     Cliente:
                         is_bundle: false
                         type: annotation
-                        dir: '%kernel.project_dir%/src/Entity/Cliente'
-                        prefix: 'App\Entity\Cliente'
+                        dir: '%kernel.project_dir%/src/Entity'
+                        prefix: 'App\Entity'
                         alias: Cliente

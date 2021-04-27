@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Form\ContactoType;
 use App\Form\ContactoBuscarType;
-use App\Entity\Cliente\Contacto;
+use App\Entity\Contacto;
 
 /**
  * @IsGranted("ROLE_USER")
@@ -20,7 +20,7 @@ class ContactosController extends AppController {
      * @Route("/", name="contactos")
      */
     public function index(Request $request): Response {
-    	$em = $this->getManager('Cliente');
+    	$em = $this->getManager();
     	$entities = null; 
         $form = $this->createForm(ContactoBuscarType::class);
         $form->handleRequest($request);
@@ -46,7 +46,7 @@ class ContactosController extends AppController {
      */
     public function formulario(Request $request, $id = null): Response
     {
-    	$em = $this->getManager('Cliente');
+    	$em = $this->getManager();
     	$entity = new Contacto();
     	if ($id) {
     		$entity = $em->getRepository(Contacto::class)->find($id);

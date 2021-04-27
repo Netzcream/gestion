@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Entity\Cliente;
+namespace App\Entity;
 
-use App\Repository\Cliente\PaisRepository;
+use App\Repository\ContactoEstadoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PaisRepository::class)
+ * @ORM\Entity(repositoryClass=ContactoEstadoRepository::class)
  */
-class Pais
+class ContactoEstado
 {
     /**
      * @ORM\Id
@@ -30,34 +30,18 @@ class Pais
     private $nombre;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $iso;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $nombre_corto;
-
-    /**
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $vigente;
 
     /**
-     * @ORM\OneToMany(targetEntity=Contacto::class, mappedBy="nacionalidad")
+     * @ORM\OneToMany(targetEntity=Contacto::class, mappedBy="estado")
      */
     private $contactos;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Direccion::class, mappedBy="pais")
-     */
-    private $direcciones;
 
     public function __construct()
     {
         $this->contactos = new ArrayCollection();
-        $this->direcciones = new ArrayCollection();
         $this->idCrm = bin2hex(openssl_random_pseudo_bytes(4)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(2)).'-'.bin2hex(openssl_random_pseudo_bytes(6));
         $this->vigente = 1;
     }
@@ -94,30 +78,6 @@ class Pais
         return $this;
     }
 
-    public function getIso(): ?string
-    {
-        return $this->iso;
-    }
-
-    public function setIso(?string $iso): self
-    {
-        $this->iso = $iso;
-
-        return $this;
-    }
-
-    public function getNombreCorto(): ?string
-    {
-        return $this->nombre_corto;
-    }
-
-    public function setNombreCorto(?string $nombre_corto): self
-    {
-        $this->nombre_corto = $nombre_corto;
-
-        return $this;
-    }
-
     public function getVigente(): ?bool
     {
         return $this->vigente;
@@ -142,7 +102,7 @@ class Pais
     {
         if (!$this->contactos->contains($contacto)) {
             $this->contactos[] = $contacto;
-            $contacto->setNacionalidad($this);
+            $contacto->setEstado($this);
         }
 
         return $this;
@@ -152,38 +112,8 @@ class Pais
     {
         if ($this->contactos->removeElement($contacto)) {
             // set the owning side to null (unless already changed)
-            if ($contacto->getNacionalidad() === $this) {
-                $contacto->setNacionalidad(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Direccion[]
-     */
-    public function getDirecciones(): Collection
-    {
-        return $this->direcciones;
-    }
-
-    public function addDireccione(Direccion $direccione): self
-    {
-        if (!$this->direcciones->contains($direccione)) {
-            $this->direcciones[] = $direccione;
-            $direccione->setPais($this);
-        }
-
-        return $this;
-    }
-
-    public function removeDireccione(Direccion $direccione): self
-    {
-        if ($this->direcciones->removeElement($direccione)) {
-            // set the owning side to null (unless already changed)
-            if ($direccione->getPais() === $this) {
-                $direccione->setPais(null);
+            if ($contacto->getEstado() === $this) {
+                $contacto->setEstado(null);
             }
         }
 

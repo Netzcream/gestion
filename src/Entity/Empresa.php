@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity\Cliente;
+namespace App\Entity;
 
-use App\Repository\Cliente\EmpresaRepository;
+use App\Repository\EmpresaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -68,6 +68,17 @@ class Empresa
      * @ORM\Column(type="boolean", nullable=true)
      */
     private $proveedor;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Correo::class)
+     */
+    private $correo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Correo::class)
+     */
+    private $correo_alternativo;
+
 
     public function __construct()
     {
@@ -236,4 +247,29 @@ class Empresa
 
         return $this;
     }
+
+    public function getCorreo(): ?Correo
+    {
+        return $this->correo;
+    }
+
+    public function setCorreo(?Correo $correo): self
+    {
+        $this->correo = $correo;
+
+        return $this;
+    }
+
+    public function getCorreoAlternativo(): ?Correo
+    {
+        return $this->correo_alternativo;
+    }
+
+    public function setCorreoAlternativo(?Correo $correo_alternativo): self
+    {
+        $this->correo_alternativo = $correo_alternativo;
+
+        return $this;
+    }
+
 }

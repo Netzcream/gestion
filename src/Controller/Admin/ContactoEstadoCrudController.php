@@ -8,7 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 
-use App\Entity\Cliente\ContactoEstado;
+use App\Entity\ContactoEstado;
 
 class ContactoEstadoCrudController extends AbstractCrudController
 {

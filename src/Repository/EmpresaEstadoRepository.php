@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\Cliente;
+namespace App\Repository;
 
-use App\Entity\Cliente\EmpresaEstado;
+use App\Entity\EmpresaEstado;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

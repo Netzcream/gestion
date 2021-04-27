@@ -9,13 +9,13 @@ use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-use App\Entity\General\User;
-use App\Entity\Cliente\EstadoCivil;
-use App\Entity\Cliente\Pais;
-use App\Entity\Cliente\Genero;
-use App\Entity\Cliente\TipoDocumento;
-use App\Entity\Cliente\EmpresaEstado;
-use App\Entity\Cliente\ContactoEstado;
+use App\Entity\User;
+use App\Entity\EstadoCivil;
+use App\Entity\Pais;
+use App\Entity\Genero;
+use App\Entity\TipoDocumento;
+use App\Entity\EmpresaEstado;
+use App\Entity\ContactoEstado;
 
 /**
  * @Route("/admin")

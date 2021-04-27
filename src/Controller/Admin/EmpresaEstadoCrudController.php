@@ -2,7 +2,7 @@
 
 namespace App\Controller\Admin;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
-use App\Entity\Cliente\EmpresaEstado;
+use App\Entity\EmpresaEstado;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
